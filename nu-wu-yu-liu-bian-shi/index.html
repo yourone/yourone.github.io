@@ -1,0 +1,978 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="description" content="你知道，写下这样的故事并不会有多容易。
+就好像从装满钱币的扑满里拿出所有的六便士。
+在取出硬币之前，所有的小猪都会碎开。
+
+
+讲个故事吧。女孩说。
+你想听什么样的故事？
+只要是你写的。
+那我给你讲一个有关王子和公主的故事吧。
+这么老套的吗？..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://yourone.github.io/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://yourone.github.io/styles/main.css">
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <!-- 数学公式 -->
+    
+    <title>群幽灵小站</title>
+    
+    <style>
+        .markdownIt-TOC {
+            padding-left: 2px;
+            width: 100%;
+        }
+
+        .markdownIt-TOC li {
+            padding-left: 2%;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div id="landlord">
+        <div class="message" style="opacity:0"></div>
+        <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+    </div>
+    <div id="codeCopyText" style="display: none"></div>
+    <div id="domainname" style="display:none">https://yourone.github.io</div>
+    <!-- 响应式布局，针对PC端内容显示 -->
+    <div id="content">
+        <div>
+            <div id="bar">
+                <head>
+  <!-- 引入Bootstrap核心样式文件 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/bootstrap.min.css">
+</head>
+<style>
+  @media screen and (max-width:1200px) and (min-width: 768px) {
+    @media (min-width: 768px) {
+      .navbar-nav {
+        float: right;
+        margin: 0;
+      }
+    }
+  }
+  @media screen and (max-width:768px){
+    .mbapspan{
+      padding: 0;
+    }
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barmenu"
+          aria-expanded="false" id="barbutton">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://yourone.github.io">群幽灵小站&nbsp;&nbsp;|</a>
+        <span class="navbar-brand mbapspan"><i id="mbaplayer" class="fa fa-play-circle-o" aria-hidden="true"
+            style="font-size: 28px;top: 12px;position: absolute;" onclick="aplayerPlay();"></i></span>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="barmenu">
+        <ul class="nav navbar-nav">
+          
+          
+          <li>
+            <a href="/">
+              首页
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archives">
+              归档
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags">
+              标签
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/post/about">
+              关于
+            </a>
+          </li>
+          
+          
+          
+          
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <!-- 引入jQuery核心js文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+  <script>
+  var btstate = false;
+  var bt = $("#barbutton");
+  var bm = $("#barmenu");
+  bt.click(function(){
+    dropdown();
+  })
+  function dropdown(){
+    console.log(btstate);
+    //下拉
+    if(btstate==false){
+      bt.removeClass("collapsed");
+      bt.attr("aria-expanded","true");
+      bm.attr("aria-expanded","true")
+      bm.fadeIn(700);
+      btstate = true;
+    }
+    else{
+      bt.addClass("collapsed");
+      bt.attr("aria-expanded","false");
+      bm.removeClass("in");
+      bm.hide();
+      bm.attr("aria-expanded","false");
+      btstate = false;
+    }
+  }
+  </script> 
+</body>
+            </div>
+            <div class="row">
+                <div class="side"><body>
+    
+
+
+
+    
+</body>
+<script>
+    //-------------------------------------------------搜索
+    // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+    var searchInput = document.querySelector('.search-input');
+    var searchResults = document.querySelector('.search-results');
+
+    // 申明保存文章的标题、链接、内容的数组变量
+    var searchValue = '',
+        arrItems = [],
+        arrLinks = [],
+        arrTitles = [],
+        arrResults = [],
+        indexItem = [],
+        itemLength = 0;
+    var tmpDiv = document.createElement('div');
+    tmpDiv.className = 'result-item';
+
+    // ajax 的兼容写法
+    var xhr = new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHTTP');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            xml = xhr.responseXML;
+            arrItems = xml.getElementsByTagName('entry');
+            itemLength = arrItems.length;
+            // 遍历并保存所有文章对应的标题、链接、内容到对应的数组中
+            // 同时过滤掉 HTML 标签
+            for (i = 0; i < itemLength; i++) {
+                var link = arrItems[i].getElementsByTagName('link')[0];
+                arrLinks[i] = link.getAttribute("href");
+                arrTitles[i] = arrItems[i].getElementsByTagName('title')[0].
+                childNodes[0].nodeValue.replace(/<.*?>/g, '');
+            }
+        }
+    }
+
+    // 开始获取根目录下 feed.xml 文件内的数据
+    xhr.open('get', '/atom.xml', true);
+    xhr.send();
+
+
+
+    // 输入框内容变化后就开始匹配，可以不用点按钮
+    // 经测试，onkeydown, onchange 等方法效果不太理想，
+    // 存在输入延迟等问题，最后发现触发 input 事件最理想，
+    // 并且可以处理中文输入法拼写的变化
+    searchInput.oninput = function () {
+        setTimeout(searchConfirm, 0);
+    }
+    searchInput.onfocus = function () {
+        searchResults.style.display = 'block';
+    }
+
+    function searchConfirm() {
+        if (searchInput.value == '') {
+            searchResults.style.display = 'none';
+        } else if (searchInput.value.search(/^\s+$/) >= 0) {
+            // 检测输入值全是空白的情况
+            searchInit();
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '请输入有效内容...';
+            searchResults.appendChild(itemDiv);
+        } else {
+            // 合法输入值的情况
+            searchInit();
+            searchValue = searchInput.value;
+            // 在标题、内容中查找
+            searchMatching(arrTitles, searchValue);
+        }
+    }
+
+    // 每次搜索完成后的初始化
+    function searchInit() {
+        arrResults = [];
+        indexItem = [];
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'block';
+    }
+
+    function searchMatching(arr1, input) {
+        // 忽略输入大小写
+        input = new RegExp(input, 'i');
+        // 在所有文章标题、内容中匹配查询值
+        for (i = 0; i < itemLength; i++) {
+            if (arr1[i].search(input) !== -1) {
+                var arr = arr1;
+                indexItem.push(i); // 保存匹配值的索引
+                var indexContent = arr[i].search(input);
+                // 此时 input 为 RegExp 格式 /input/i，转换为原 input 字符串长度
+                var l = input.toString().length - 3;
+                var step = 10;
+
+                // 将匹配到内容的地方进行黄色标记，并包括周围一定数量的文本
+                arrResults.push(arr[i].slice(indexContent - step, indexContent));
+            }
+        }
+
+        // 输出总共匹配到的数目
+        var totalDiv = tmpDiv.cloneNode(true);
+        totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
+        searchResults.appendChild(totalDiv);
+
+        // 未匹配到内容的情况
+        if (indexItem.length == 0) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '未匹配到内容...';
+            searchResults.appendChild(itemDiv);
+        }
+
+        // 将所有匹配内容进行组合
+        for (i = 0; i < arrResults.length; i++) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerHTML = '<b>[' + arrTitles[indexItem[i]] +
+                ']</b><p>' + arrResults[i] + "</p><hr />";
+            itemDiv.setAttribute('onclick', 'changeHref(arrLinks[indexItem[' + i + ']])');
+            searchResults.appendChild(itemDiv);
+        }
+    }
+
+    function changeHref(href) {
+        location.href = href;
+    }
+
+    function showqq() {
+        var qq = document.getElementById("qq").innerHTML;
+        if (qq != '')
+            window.location.href = "tencent://message/?uin=" + qq + "&Site=&Menu=yes";
+        else
+            alert("博主暂未设置QQ联系方式");
+    }
+</script>
+</div>
+                
+            <div class="col-md-2 col-lg-3"></div>
+            <div id="postmain" class="col-xs-12 col-sm-12 col-md-8  col-lg-6 posttop" >
+                <link rel="stylesheet" href="https://yourone.github.io/media/css/font-awesome.css">
+
+<body>
+    <div class="allcontent" id="postdetail">
+        <div class="postshow" style="padding-bottom: 0;">
+            
+            <div class="postdetailimg" style="width:100%;overflow: hidden;">
+                
+                <img src="" class="postimage">
+                
+            </div>
+            <div class="postinfo-detail">
+                <div class="postdate"><i class="fa fa-calendar"></i>2020-11-05</div>
+            <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 13 min read</div>
+            <div class="posttag">
+                
+            </div>
+        </div>
+        
+        <div id="articlecontent">
+            <div id="texttitle" style="text-align: center">
+                <h2>女巫与六便士</h2>
+                <!-- id 将作为查询条件 -->
+                <div id="pl" style="display:none">https://yourone.github.io/nu-wu-yu-liu-bian-shi/</div>
+                <div id="rootaddr" style="display:none">https://yourone.github.io</div>
+                <span id="hotnum">
+                    <h4><i class="fa fa-eye" aria-hidden="true" style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
+                            class="hotnum">loading...</i></h4>
+                </span>
+            </div>
+            <div class="text ">
+                <p>你知道，写下这样的故事并不会有多容易。</p>
+<p>就好像从装满钱币的扑满里拿出所有的六便士。</p>
+<p>在取出硬币之前，所有的小猪都会碎开。</p>
+<p></p>
+<p></p>
+<p>讲个故事吧。女孩说。</p>
+<p>你想听什么样的故事？</p>
+<p>只要是你写的。</p>
+<p>那我给你讲一个有关王子和公主的故事吧。</p>
+<p>这么老套的吗？</p>
+<p>老套的故事比较好编嘛。</p>
+<p>你总是有理由。</p>
+<p></p>
+<p></p>
+<p>皇宫的石英钟敲响了十一个音符，月色便为那一场盛大的舞会拉开了帷幕。舞池中的轻盈地闪烁着灵动，刚刚开场，一首他很熟悉的钢琴曲，班得瑞的初雪。</p>
+<p></p>
+<p></p>
+<p>这么说，你笔下的王子喜欢班得瑞？</p>
+<p>也许他仅仅是喜欢初雪。</p>
+<p>OK~我想你是偷看了我的MP3……</p>
+<p>那我们继续。</p>
+<p></p>
+<p></p>
+<p>高脚杯随着旋律轻轻晃动，王子倚着墙壁看着贵族们都已带着舞伴往舞池中去了。</p>
+<p>殿下，您不去跳舞么？侍从在一旁轻声地询问。</p>
+<p>王子摇头。他的侍从无法理解王子对舞会上娇美的贵族小姐的不屑一顾，只有他的女巫朋友知道他的心思——</p>
+<p>——他们的王子陛下不可救药地爱上了一个农夫家的女孩儿，他的女巫承诺会帮助他。</p>
+<p>女巫从箱子里翻出折叠的晚礼服，将象牙塔外的白马与南瓜马车缩小藏在了袖子里，敲开了农夫家的木门。</p>
+<p></p>
+<p></p>
+<p>啧，这个姑娘一定叫辛德瑞拉。</p>
+<p>也许。</p>
+<p>一定是因为格林童话不需要支付版权费用。</p>
+<p>说不定。</p>
+<p>请多说两个字好吗？你的QQ是按照字数收费的吗？</p>
+<p>那我接着讲。</p>
+<p>哇……</p>
+<p></p>
+<p></p>
+<p>女巫告诉灰姑娘说，王子喜欢她。</p>
+<p>可是我不喜欢王子。灰姑娘说。但她最终还是去了聚会——在女巫的恳求下，告别了爱她的父亲、继母与两个姐姐，坐上了开往王宫的南瓜马车。</p>
+<p>我觉得你需要一双合脚的鞋子，继母说着，找到了她的水晶鞋。我们认为你长大了，就叫老比利给你做了一双。</p>
+<p>谢谢妈妈。灰姑娘笑起来，像初雪后微笑的铃兰。</p>
+<p>王子看见笨重的盔甲推开了半掩的殿门，守卫的骑士将灰姑娘领到了王子的身边。</p>
+<p></p>
+<p>殿下，灰姑娘来了。</p>
+<p></p>
+<p>骑士拎着他的长枪走了。于是便剩下有些局促的灰姑娘，左手捏着右手的手心。</p>
+<p>那黑色的晚礼服透着他无法移开目光的纯净与优雅。这时时钟缓缓地又敲响了十二下。</p>
+<p>对不起，我迟到了。灰姑娘说。</p>
+<p>不，舞会才刚刚开始。</p>
+<p></p>
+<p></p>
+<p>快住手，这根本不是灰姑娘的故事！</p>
+<p>好的，我停住了。</p>
+<p>哪里会有不喜欢王子的灰姑娘！</p>
+<p>说不定呢。</p>
+<p>你又故作高深。</p>
+<p>那我……</p>
+<p>那你继续讲。</p>
+<p>噗。</p>
+<p></p>
+<p></p>
+<p>舞会之后的灰姑娘依旧不喜欢王子，不喜欢王子的灰姑娘喜欢星星，灰姑娘也喜欢帮着爱她的继母与姐姐们收拾散落在房间的豆子——</p>
+<p>——她说，那会有种捡起散落在地上的星星的感觉。</p>
+<p></p>
+<p></p>
+<p>OK~勤劳的辛德瑞拉，喜欢捡豆子。（记笔记）</p>
+<p>嘿，快住手，你这样根本不是听童话！</p>
+<p>好的。（乖巧）</p>
+<p></p>
+<p></p>
+<p>王子的女巫朋友认为这是一件很麻烦而且不快乐的事情，于是请了蚂蚁们去帮助灰姑娘，但她的蚂蚁们回来后告诉她灰姑娘真的喜欢这样做。</p>
+<p>于是女巫去了王子的象牙塔，这时候王子正对着空气发呆。</p>
+<p>好吧，殿下，女巫叹了口气，你的灰姑娘喜欢星星。</p>
+<p>真的？王子的眼睛亮了。</p>
+<p>那么请给我星星吧。</p>
+<p>那种东西……女巫摇了摇头，我怎么可能会有。</p>
+<p>于是王子的眼神又黯了下去，是么……</p>
+<p>……女巫看了王子很久，她的目光透过薄薄的面纱，看到王子眼中浩瀚的星海。</p>
+<p>终于，她转过脸去，杰克的豌豆通向巨人的城堡，那儿可以摘到星星。</p>
+<p>王子冲出了象牙塔。</p>
+<p></p>
+<p></p>
+<p>你又篡改童话了，女孩搅动着咖啡杯。</p>
+<p>嗯……有吗？</p>
+<p>所以王子喜欢灰姑娘，但是灰姑娘不喜欢王子？</p>
+<p>嗯……啊？嗯。</p>
+<p>噫，我总感觉你在敷衍我。</p>
+<p>王子去给他的灰姑娘摘星星了，你有什么想要的吗？</p>
+<p>太阳怎么样？</p>
+<p>这个简单。他点了点头，然后停在当场。</p>
+<p>开玩笑的。女孩把最后一口咖啡喝完。</p>
+<p></p>
+<p></p>
+<p>小矮人来的时候女巫正在象牙塔上百无聊赖地摆弄她的扫帚与水晶球。</p>
+<p>阳光被女巫一遍遍地从阳台外扫进来，于是氤氲了整个屋子的温暖。</p>
+<p>巫女殿下，小矮人鞠了个躬，请原谅我的唐突，我想是否能邀请您去一趟我们的村子呢？</p>
+<p>很荣幸被，我远道而来的朋友，女巫欠了欠身，念着含糊不清的咒语，水晶球漂浮着收集阳光的色彩。</p>
+<p>可是你要知道我暂时不能离开这儿，我是说，王子殿下会在不久的将来回来，我会在这儿迎接他。</p>
+<p>我很抱歉，如果您是要等王子殿下的话……小矮人小心翼翼地整理着措辞，我想……</p>
+<p>嗯？女巫手上的动作缓了下来，虽然隔着面纱，但小矮人丝毫不怀疑她是在蹙着眉——阳光突然就冷了。</p>
+<p>好吧，我是说，小矮人叹了口气，殿下陷入了沉睡。</p>
+<p></p>
+<p>女巫，小矮人，女巫的水晶球与扫把都瞬间消失了。</p>
+<p></p>
+<p></p>
+<p>她已经有很久没见过他了，就好像人间蒸发一般，他突然消失在了这个城市。</p>
+<p>两天，三天，五天。直到她找到他的朋友。</p>
+<p>你知道他的消息？她扑到朋友面前。</p>
+<p>朋友点头，他一直在家呢。</p>
+<p>在家……</p>
+<p>是啊，他脑子抽了，大半夜里一个人去爬紫峰大厦，下台阶的时候脚下一滑，就两条腿都打上石膏了……</p>
+<p>朋友仰着头回忆，转过神来女孩已经消失了。</p>
+<p></p>
+<p></p>
+<p>与世无争的村落。小矮人们被突然出现的女巫吓了一跳，她却没有丝毫的心思去安抚这些受伤的生灵——女巫的目光望向花树——花树下晶莹的容器里，她的王子安静地睡着，身上覆着晨露与芳草。</p>
+<p>怎么会这样。女巫轻声地，好像在自言自语。</p>
+<p>殿下从我的豌豆爬上去，得到了星星，但凶残的巨人发现了我们。杰克默默地站在水晶棺前，小声地说着一个好像很平淡的故事，王子和巨人于是开始了搏斗，殿下的剑刺瞎了巨人的独眼。</p>
+<p>我是说，她依旧柔声细语，他怎么会变成这样。</p>
+<p>失去了独眼的巨人发了疯似的攻击它所能碰到的一切事物，城堡，我，以及殿下，城堡毁了，我与殿下一起被巨人从云端打飞……对不起，我的豌豆一次只能接一个人……</p>
+<p>是么。她沉默了。</p>
+<p>小矮人们救起了殿下，他们悉数治疗了殿下的伤，但殿下依旧昏迷着……</p>
+<p>杰克，她兀的打断了杰克的言语，望着沉睡的王子，如果殿下无法醒来，我会烧了你和你的豌豆。</p>
+<p>可是，巫女阁下……我明白了。</p>
+<p>于是所有人都沉默。</p>
+<p></p>
+<p></p>
+<p>我们还有办法，小矮人长老突然说。</p>
+<p>是的，杰克凝重地点了点头，可那方法……</p>
+<p>没有别的办法了么？女巫皱起了眉。</p>
+<p>是的，杰克说。</p>
+<p>她于是轻声地，那么，我去请灰姑娘。</p>
+<p></p>
+<p>有这样的一种药剂，喝下它的沉睡者会被他所深爱的人的吻所唤醒——但那药剂有着不可逆的副作用——当太阳落山，依旧沉睡的人将化为泡沫，消失在茫茫的夜色之中。</p>
+<p></p>
+<p>这是最后的一种方法。</p>
+<p>他们决定这样做。</p>
+<p></p>
+<p></p>
+<p>可是我不喜欢王子，灰姑娘说。</p>
+<p>但她最终还是去了小矮人们的村落——在女巫的恳求下，再次告别了爱她的父亲、继母和两个姐姐，坐上了女巫的扫帚。</p>
+<p></p>
+<p>真的要吻上去嘛？</p>
+<p>嗯……是的。</p>
+<p></p>
+<p>女巫喂王子喝下了汤药——那种可以被沉睡者所深爱着的人的吻唤醒的药剂——于是灰姑娘闭上了眼睛，吻了上去。</p>
+<p></p>
+<p>没有任何的效果。</p>
+<p></p>
+<p>灰姑娘离开了。</p>
+<p></p>
+<p>女巫瘫坐到了地上，她看着渐渐西去的太阳，对着空气一个人发起了呆。没有人能阻止太阳的西去，即使是巫女也不行。她知道，当太阳完全沉默到远山之下，水晶棺内的他，将化为升腾的泡沫。</p>
+<p>巫女殿下……杰克捧着帽子来到她的身边，站立，豌豆种子在帽子中静静地卧着。</p>
+<p>让我一个人待会儿。她轻声说。</p>
+<p>于是杰克抱着帽子离开了，留下她与沉睡着王子的水晶棺。</p>
+<p></p>
+<p>太阳，渐渐地走远了，山的影子在黄昏中拉的很长很长。女巫看见王子的躯体变得愈发晶莹起来，她知道，时间快到了。</p>
+<p>你知道吗？女巫苦笑着，殿下，我一直喜欢着你啊。</p>
+<p>王子沉睡着，没有任何回应，只是晶莹的面孔逐渐变得透明，仿佛就要消失。</p>
+<p></p>
+<p>不！不能！她突然疯了一般，她无法接受她深爱的王子将要离开她的事实。</p>
+<p>阳光，阳光……</p>
+<p>远山，阳光只剩了一个尾巴，靠着山谷的云被染得通红，仿佛溢出的鲜血。</p>
+<p>阳光！阳光！</p>
+<p></p>
+<p>对了，水晶球！她毫不犹豫地砸碎了她的水晶球，瞬间，她收集的阳光重新照亮了整个水晶棺。</p>
+<p>王子的躯体凝实了些，但只片刻，便又开始消散。</p>
+<p>不，不能，不能这样，女巫慌乱着，我不接受……你不能……我不接受！</p>
+<p>她于是慌乱地卸下了自己的面纱——她全然忘了王子为了灰姑娘不顾一切去摘星星的事实——她深深地吻了上去。</p>
+<p></p>
+<p></p>
+<p>白痴啊你！</p>
+<p>大晚上爬什么紫峰？你疯了吗？</p>
+<p>对不起哦……没注意看路……他小声地道歉。</p>
+<p>笨蛋！看路都不会！笨蛋笨蛋笨蛋！</p>
+<p>对不起哦……他挠挠头，我没想到你会过来看我……</p>
+<p>还好意思说！你当你在玩人间蒸发吗！一下子消失个三四天，连声招呼都不打！说，晚上去紫峰干什么？</p>
+<p>没……他支吾着，并守着房门不让她往里面看些什么。</p>
+<p>喂，我说，你不会在你家藏了别的女人吧？</p>
+<p>没！他顿时从房门移了开去。她怀疑地往里面看去。</p>
+<p>沙发，电视，冰箱，电脑，桌子……桌子……</p>
+<p>她看见窗帘紧闭着，没有一点点光线。靠着房间里侧的桌子上，杂乱无章地铺着底片。</p>
+<p></p>
+<p>所有的底片，都记录着太阳。</p>
+<p></p>
+<p>她一把抱住了他。</p>
+<p></p>
+<p>我当时……开玩笑的啊……</p>
+<p></p>
+<p>嗯。我知道。</p>
+<p></p>
+<p></p>
+<p>王子醒了。</p>
+<p></p>
+<p></p>
+<p>王子和女巫从此快乐地生活在一起。</p>
+<p></p>
+<p></p>
+<p>那灰姑娘呢？</p>
+<p>很多年后，女孩终于按捺不住好奇，问了他这样的问题。</p>
+<p>他于是笑笑，谁知道呢？</p>
+<p></p>
+<p></p>
+<p>喂，别玩手机。</p>
+<p>嗯？</p>
+<p>日落了，很漂亮。</p>
+<p>嗯。</p>
+<p></p>
+<p></p>
+<p>这便是我要说的，女巫与六便士的故事。</p>
+<p></p>
+<p></p>
+<p>二周目</p>
+<p></p>
+<p></p>
+<p>啊，你回来了啊。</p>
+<p>故事已经讲完了。</p>
+<p>我不会再讲一遍的。</p>
+<p>别点了。</p>
+<p>你知道，童话最温馨的时刻，在于人们与童话的第一次相遇。</p>
+<p>那之后一些人决定重温。</p>
+<p>因为他们已经失去了。</p>
+<p></p>
+<p>失去什么？</p>
+<p>是啊……失去了什么……</p>
+<p></p>
+<p>你真的想听？</p>
+<p>那就再讲一个故事吧。</p>
+<p>也不是很长就对了。</p>
+<p></p>
+<p>从前，有一个沉默寡言的骑士，爱上了农夫家的女儿。</p>
+<p></p>
+<p>然后？</p>
+<p></p>
+<p>没有然后了。</p>
+<p></p>
+<p>【播放WhileWeSleepwalk】</p>
+<p></p>
+<p></p>
+<p>嗨，雷蒙德，我们俩是邻居呢！</p>
+<p>啊，嗯……</p>
+<p></p>
+<p></p>
+<p>雷蒙德，怎么了？突然把我叫出来。</p>
+<p>我……我可以做骑士了……</p>
+<p>哇，这么厉害，是王子的骑士吗？好棒啊！</p>
+<p>明天就要去王宫任职了，我还……我觉得我还缺点什么……</p>
+<p>唔……缺的就要补起来呀，说说看，还缺什么？</p>
+<p>我……我还缺一个女朋友……你这样的……</p>
+<p>哈？</p>
+<p>你……你愿意做我的女朋友么……</p>
+<p>哈哈，好呀！</p>
+<p></p>
+<p></p>
+<p>雷蒙德，你有没有想过，其实我们不太合适？</p>
+<p>嗯……没有。</p>
+<p>那如果有呢？</p>
+<p>……没有。</p>
+<p>噗，雷蒙德你看起来好傻。</p>
+<p>啊？哈……</p>
+<p></p>
+<p></p>
+<p>雷蒙德我们之间隔了好远哦，你看你在王宫，离我这么远，一个月都没办法来看我一次……</p>
+<p>啊……</p>
+<p>下次我去王宫附近看你吧！你要好好招待我哦！</p>
+<p>啊……嗯！</p>
+<p></p>
+<p></p>
+<p>雷蒙德！***啊！知道我要来也不提前把旅店订好！</p>
+<p>我……我以为会有空房……</p>
+<p>你！这！个！榆！木！脑！袋！</p>
+<p>……下次我会注意的……</p>
+<p>你还想有下次！？</p>
+<p>啊？我没……</p>
+<p>哼！没！有！下！次！了！</p>
+<p>嗯嗯嗯嗯……</p>
+<p></p>
+<p></p>
+<p>诶！雷蒙德你怎么这么快回来啦！</p>
+<p>我……嘿嘿，想你了就过来看你了……车费其实也不是很贵……</p>
+<p></p>
+<p></p>
+<p>雷蒙德，我妈妈说我们是不可能的呢。</p>
+<p>啊……嗯……</p>
+<p>我年纪也比你大呢。</p>
+<p>啊……嗯……</p>
+<p>呐，以后还要养家，你从王宫服役回来我都快三十岁了……</p>
+<p>笨蛋。等我。我会娶你的。</p>
+<p>你怎么这么固执呢？</p>
+<p></p>
+<p></p>
+<p>雷蒙德……我想我们还是分手吧。</p>
+<p>啊？为……</p>
+<p>我们俩不合适。</p>
+<p>哦……</p>
+<p></p>
+<p></p>
+<p>嗯……还能做朋友么？</p>
+<p>可以呀！</p>
+<p>嗯！</p>
+<p></p>
+<p></p>
+<p>雷蒙德雷蒙德雷蒙德！</p>
+<p>啊……</p>
+<p>王子要在王宫举行舞会诶！</p>
+<p>……你又不是公主。</p>
+<p>你在王宫帮王子看门嘛！你有办法的！</p>
+<p>我没有……</p>
+<p>雷蒙德~</p>
+<p>嗯……我看看……</p>
+<p></p>
+<p></p>
+<p>骑士！前面的路怎么了？</p>
+<p>回禀殿下，通往镇中心的一号大道正在施工，请允许我们临时地调换一下回宫殿的路线，还请殿下……</p>
+<p>嗯，没事，反正原来那条路我也走腻了。</p>
+<p>嗯。</p>
+<p></p>
+<p></p>
+<p>骑士！那个女孩是谁！</p>
+<p>回禀殿下，她是灰姑娘。</p>
+<p></p>
+<p></p>
+<p>殿下，灰姑娘来了。</p>
+<p></p>
+<p></p>
+<p>于是雷蒙德便离开了灰姑娘的生活。</p>
+<p></p>
+<p>有事常联系。</p>
+<p></p>
+<p>我这样说。</p>
+<p></p>
+<p>夜神不说话，2018年11月，泰州。<br>
+来自TapTap 用户[ID:1883133 夜神不说话]</p>
+
+            </div>
+            <hr style="width: 80%;">
+            
+            
+            <div class="postfooter">
+                <ul class="post-copyright">
+                    <li><strong>文章作者：</strong></li>
+            <li><strong>原文链接：</strong>https://yourone.github.io/nu-wu-yu-liu-bian-shi/</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用<i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA
+                许可协议。转载请注明出处！</li>
+            </ul>
+        </div>
+        <div id="otherpost">
+            
+            
+            <div class="next-post-pc">
+                <div id="npcontainer" onclick="window.location.href= 'https://yourone.github.io/hello-gridea/';return false">
+                    
+                    <img src="https://yourone.github.io/post-images/hello-gridea.png" style="width: 100%;" class="opimg">
+                    
+                    <h4 class="optitle">Hello Gridea</h4>
+                </div>
+            </div>
+            <div class="next-post">
+                下一篇 <a href="https://yourone.github.io/hello-gridea/">Hello Gridea</a>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    </div>
+
+</body>
+<script>
+    //文章阅读热度
+    var pl = $("#pl").html();
+    var rootaddr = $("#rootaddr").html();
+    pl = pl.replace(rootaddr, "");
+    $("#hotnum").attr('id', pl);
+</script>
+                <div id="comment" class="comment" style="background: white">
+                    <div class="commentcontainer">
+                        
+                        <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-3">
+            </div>
+            <div id="bg">
+            </div>
+        </div>
+        
+        
+        <div class="toc-container">
+            
+    </div>
+    </div>
+    </div>
+    <div class="tog">
+        <div class="toggleContainer">
+            <div class="toggle">
+                <i class="fas fa-angle-double-up"></i>
+            </div>
+        </div>
+    </div>
+    <div id="bgchoice" style="display: none"></div>
+    
+    <div id="bgurl" style="display:none"></div>
+    
+    </div>
+</body>
+<script>
+    var img = $("img");
+    for (var i = 0; i < img.length; i++) {
+        if (img.eq(i).attr("class") == undefined) {
+            img.eq(i).attr("class", "lazyload");
+            var imgsrc = img.eq(i).attr("src");
+            img.eq(i).attr("data-original", imgsrc);
+            img.eq(i).attr("src", "");
+            img.eq(i).hide();
+        }
+    }
+</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script>
+    //寻找所有code标签，加复制按钮鸭！(行内代码除外)
+    var codes = document.getElementsByTagName('code');
+    if (codes.length) {
+        for (var i = 0; i < codes.length; i++) {
+            //高度/行高=文本行数
+            // var rowNum=Math.round(codes[i].height()/parseFloat(codes[i].css('line-height')));
+            // console.log("当前有"+rowNum+"行");
+            var code_id = "code_id_" + i;
+            codes[i].setAttribute("id", code_id);
+            var ci = "#" + code_id;
+            var codedot = $(ci);
+            var rowNum = Math.round(codedot.height() / parseFloat(codedot.css('line-height')));
+            if (rowNum <= 1) continue;
+            var btn = document.createElement("button");
+            btn.setAttribute("class", "copybt");
+            btn.setAttribute("data-clipboard-target", "#" + code_id);
+            btn.innerHTML = '复制代码';
+            codes[i].parentNode.insertBefore(btn, codes[i]);
+        }
+    };
+    var cop = new ClipboardJS('.copybt');
+    var codeCopyText = $("#codeCopyText").html();
+    cop.on('success', function (e) {
+        alert(codeCopyText);
+        e.clearSelection();
+    });
+    cop.on('error', function (e) {
+        alert("矮油，复制失败了...手动复制吧勇士！");
+        e.clearSelection();
+    });
+</script>
+
+<script>
+    $(function () {
+        $('.toggleContainer').click(function () {
+            $('html,body').animate({
+                scrollTop: '0px'
+            }, 800);
+        });
+        $(window).scroll(function () {
+            var st = $(window).scrollTop();
+            if (st > 30) {
+                $(".toggleContainer").fadeIn(400);
+            } else {
+                $(".toggleContainer").fadeOut(100);
+            }
+        });
+    });
+</script>
+
+<script>
+    var bgchoice = $('#bgchoice').html();
+    var bg = $('#bg');
+    var bgurl = document.getElementById("bgurl").innerHTML;
+    if (bgchoice == 'default')
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+    bg.css("background", "url('" + bgurl + "')");
+</script>
+
+
+
+
+<!-- 动态更改上(下)一篇博客图片框长宽 -->
+<script>
+    npcontainer = document.querySelector('#npcontainer');
+    npstyle = window.getComputedStyle(npcontainer, null);
+    npwidth = npstyle.width;
+    npheight = 0.6 * Number(npwidth.replace("px", ""));
+    npheight = npheight.toString() + "px";
+    var op = $(".opimg");
+    op.css("height", npheight);
+</script>
+
+<script src="https://yourone.github.io/media/share/dist/Share.js"></script>
+
+<script>
+    var avatarSrc = $(".avatar").attr("src");
+    var dp = document.getElementsByClassName("describtion")[0].innerHTML;
+</script>
+
+
+<script>
+    var title = document.getElementById("texttitle").getElementsByTagName("h2");
+    
+    var share = new Share('.share', {
+        title: title[0].innerHTML,
+        initialized: true,
+        //默认获取网站描述
+        description: dp,
+        //网站图片默认获取的是设置的用户头像
+        image: avatarSrc,
+        //激活的分享网站
+        sites: ["weibo", "qq", "wechat", "douban", "qzone", "facebook", "twitter", "google"],
+        //微信分享PC端会生成二维码分享,移动端如果可以唤起微信最好
+        wechatQrcodeTitle: "微信扫一扫：分享", // 微信二维码提示文字
+        wechatQrcodeHelper: '<p>微信里扫一下二维码</p><p>便可将本文分享至朋友圈。</p>',
+        //关闭的网站分享
+        disabled: ['google', 'linkedin'],
+        wechatQrcodePosition: 'bottom'
+    });
+
+    //点击分享按钮展现出分享icons
+    var sharebtnTag = false;
+    $(".sharebtn").click(function () {
+        if(!sharebtnTag)
+        {
+            $(".share").show();
+            sharebtnTag = true;
+        }
+        else
+        {
+            $(".share").hide();
+            sharebtnTag = false;
+        }
+    })
+
+    var donatebtnTag = false;
+    $(".donateImg").click(function () {
+        if(!donatebtnTag)
+        {
+            $(".donate").show();
+            donatebtnTag = true;
+        }
+        else{
+            $(".donate").hide();
+            donatebtnTag = false;
+        }
+    })
+
+    //加载后的事件同步（阅读量、移动端评论等
+    window.onload=function(){
+        getHotnum();
+        var sharepc = $(".share").eq(0).html();
+        $(".share").eq(1).html(sharepc);
+        document.getElementById("veditor").setAttribute("placeholder", jrsc);
+        aplayerbtnInit();
+    }
+</script>
+
+
+<script>
+    jQuery(document).ready(function ($) {
+        function lazyload() {
+            var oLazyload = $("img.lazyload"),
+                fLazyload = function (hLazyload) {
+                    var nLazyload = $(window).height() + $(document).scrollTop();
+                    oLazyload.each(function () {
+                        $(this).offset().top < nLazyload && ($(this).trigger("appear"), oLazyload =
+                            oLazyload.not(this));
+                    }), 0 == oLazyload.length && $(window).unbind("scroll", fLazyload);
+                };
+            oLazyload.each(function () {
+                $(this).one("appear", function () {
+                    $(this).attr("src", $(this).attr("data-original"));
+                    $(this).fadeIn(500);
+                });
+            }), $(window).bind("scroll", fLazyload), fLazyload();
+        }
+        lazyload();
+    });
+</script>
+
+<!-- <script src="https://yourone.github.io/media/js/av-min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-live-query-min.js"></script> -->
+
+<script>
+    function getHotnum() {
+        //文章阅读热度（重构，利用leancloud原生api）
+        var pl = $("#pl").html();
+        var rootaddr = $("#rootaddr").html();
+        pl = pl.replace(rootaddr, "");
+
+        var appid = '';
+        var appkey = '';
+        console.log(appid, appkey)
+        if(AV==undefined)
+            AV.init({
+                appId: appid,
+                appKey: appkey
+            });
+        const query = new AV.Query('Counter');
+        query.equalTo('url', pl);
+        var time = 'Loading...';
+        query.find().then(function (results) {
+            console.log(results)
+            if (results.length == 0) {
+                console.log("0")
+                var NewCounter = AV.Object.extend('Counter');
+                var nc = new NewCounter();
+                nc.save({
+                    time: 1,
+                    title: "女巫与六便士",
+                    url: pl,
+                    xid: pl,
+                }).then(function (object) {
+                    $(".hotnum").eq(0).html(1);
+                    $(".hotnum").eq(1).html(1);
+                });
+            } else {
+                id = results[0].id;
+                var todo = AV.Object.createWithoutData('Counter', id);
+                time = results[0].attributes.time + 1;
+                todo.set("time", time);
+                todo.save();
+                console.log(todo);
+                $(".hotnum").eq(0).html(time);
+                $(".hotnum").eq(1).html(time);
+            }
+
+        }, function (error) {
+            console.log(error)
+        });
+    }
+</script>

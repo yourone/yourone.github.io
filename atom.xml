@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yourone.github.io</id>
     <title>群幽灵小站</title>
-    <updated>2020-11-06T00:04:04.059Z</updated>
+    <updated>2020-11-06T00:04:28.589Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yourone.github.io"/>
     <link rel="self" href="https://yourone.github.io/atom.xml"/>
@@ -11,8 +11,8 @@
     <rights>All rights reserved 2020, 群幽灵小站</rights>
     <entry>
         <title type="html"><![CDATA[女巫与六便士]]></title>
-        <id>https://yourone.github.io/post/nu-wu-yu-liu-bian-shi/</id>
-        <link href="https://yourone.github.io/post/nu-wu-yu-liu-bian-shi/">
+        <id>https://yourone.github.io/nu-wu-yu-liu-bian-shi/</id>
+        <link href="https://yourone.github.io/nu-wu-yu-liu-bian-shi/">
         </link>
         <updated>2020-11-05T13:45:52.000Z</updated>
         <content type="html"><![CDATA[<p>你知道，写下这样的故事并不会有多容易。</p>
@@ -353,8 +353,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://yourone.github.io/post/hello-gridea/</id>
-        <link href="https://yourone.github.io/post/hello-gridea/">
+        <id>https://yourone.github.io/hello-gridea/</id>
+        <link href="https://yourone.github.io/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
